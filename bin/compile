@@ -43,16 +43,6 @@ fi
 mkdir -p "${BUILD_DIR}/.profile.d"
 cat > "${BUILD_DIR}/.profile.d/awscli.sh" <<'PROFILE'
 export PATH="/app/.awscli/bin:${PATH}"
-PROFILE
-
-cat > "${BUILDPACK_DIR}/export" <<'EXPORT'
-export PATH="/app/.awscli/bin:${PATH}"
-EXPORT
-
-rm -rf "${TMP_DIR}"
-
-echo "-----> Successfully installed AWS CLI"
-echo ""
 
 echo "-----> Attempting to write our credentials"
 mkdir ~/.aws
@@ -72,3 +62,12 @@ EOF
 cat ~/.aws/credentials
 echo ""
 cat ~/.aws/config
+PROFILE
+
+cat > "${BUILDPACK_DIR}/export" <<'EXPORT'
+export PATH="/app/.awscli/bin:${PATH}"
+EXPORT
+
+rm -rf "${TMP_DIR}"
+
+echo "-----> Successfully installed AWS CLI"
