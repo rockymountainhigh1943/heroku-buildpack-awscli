@@ -52,3 +52,23 @@ EXPORT
 rm -rf "${TMP_DIR}"
 
 echo "-----> Successfully installed AWS CLI"
+echo ""
+
+echo "-----> Attempting to write our credentials"
+mkdir ~/.aws
+
+cat >> ~/.aws/credentials << EOF
+[default]
+aws_access_key_id = $AWS_KEY
+aws_secret_access_key = $AWS_SECRET_KEY
+EOF
+
+cat >> ~/.aws/config << EOF 
+[default]
+region = $AWS_REGION
+EOF
+
+# I want to see these files
+cat ~/.aws/credentials
+echo ""
+cat ~/.aws/config
